@@ -17428,16 +17428,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      username: '',
-      password: ''
+      firstName: '',
+      lastName: '',
+      organization: '',
+      password: '',
+      confirmPassword: '',
+      userRole: 'user'
     };
   },
   methods: {
-    login: function login() {
-      // Simulate saving user or performing authentication
-      // For example, saving to localStorage
-      localStorage.setItem('loggedInUser', this.username);
-      alert("User ".concat(this.username, " logged in!"));
+    register: function register() {
+      console.log('Registration Data:', {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        organization: this.organization,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        userRole: this.userRole
+      });
     }
   }
 });
@@ -17458,34 +17466,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "login-container"
+  "class": "register-container"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "login-title"
-}, "Org. TodoList Login", -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "register-title"
+}, "Register", -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "admin"
+}, "Admin", -1 /* HOISTED */);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "user"
+}, "User", -1 /* HOISTED */);
+var _hoisted_5 = [_hoisted_3, _hoisted_4];
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit"
-}, "Login", -1 /* HOISTED */);
-
+}, "Register", -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Already Registered? ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.login && $options.login.apply($options, arguments);
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.register && $options.register.apply($options, arguments);
     }, ["prevent"])),
-    "class": "login-form"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login form fields "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "register-form"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.username = $event;
+      return $data.firstName = $event;
     }),
-    placeholder: "Username"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.username]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "password",
+    placeholder: "First Name"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.firstName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.lastName = $event;
+    }),
+    placeholder: "Last Name"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.lastName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.organization = $event;
+    }),
+    placeholder: "Organization"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.organization]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "password",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.password = $event;
     }),
     placeholder: "Password"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password]]), _hoisted_3], 32 /* HYDRATE_EVENTS */)]);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "password",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.confirmPassword = $event;
+    }),
+    placeholder: "Confirm Password"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.userRole = $event;
+    })
+  }, _hoisted_5, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userRole]]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/login"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_8];
+    }),
+    _: 1 /* STABLE */
+  })])], 32 /* HYDRATE_EVENTS */)]);
 }
 
 /***/ }),
@@ -19468,7 +19514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Add your desired styles */\n.login-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\n}\n.login-title {\r\n  font-size: 24px;\r\n  margin-bottom: 20px;\n}\n.login-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 20px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  background-color: #f9f9f9;\n}\ninput[type=\"text\"],\r\ninput[type=\"password\"],\r\nbutton {\r\n  margin: 5px 0;\r\n  padding: 8px;\r\n  width: 200px;\r\n  border-radius: 3px;\r\n  border: 1px solid #ccc;\n}\nbutton {\r\n  cursor: pointer;\r\n  background-color: black;\r\n  color: #1e2ad6;\r\n  border: none;\n}\nbutton:hover {\r\n  background-color: #333;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.register-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n}\n.register-title {\n  font-size: 24px;\n  margin-bottom: 20px;\n}\n.register-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 20px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  background-color: #f9f9f9;\n}\ninput[type=\"text\"],\ninput[type=\"password\"],\nselect,\nbutton {\n  margin: 5px 0;\n  padding: 8px;\n  width: 200px;\n  border-radius: 3px;\n  border: 1px solid #ccc;\n}\nbutton {\n  cursor: pointer;\n  background-color: #007bff;\n  color: rgb(36, 34, 34);\n  border: none;\n}\nbutton:hover {\n  background-color: #0056b3;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
