@@ -13,5 +13,14 @@ Edit .env and put database, import sql db and other credentials
 - Run: php artisan serve
 
 ## Sample run
+- Register
+![Example Image](https://github.com/BrianNyaberi/laravel-vue-todo/blob/main/register.png)
+  - Capture user details, i.e. Admin/user, organisation name...
+
 - Login
 ![Example Image](https://github.com/BrianNyaberi/laravel-vue-todo/blob/main/login.png)
+  - Normal users will see their tasks, Admin all tasks...
+
+- Tasks
+![Example Image](https://github.com/BrianNyaberi/laravel-vue-todo/blob/main/tasks.png)
+  - Tasks specific to user brian
