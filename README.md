@@ -11,3 +11,7 @@
 - Import database: in directory > laravel_vue_todolist.sql
 Edit .env and put database, import sql db and other credentials
 - Run: php artisan serve
+
+## Sample run
+- Login
+![Example Image](https://github.com/BrianNyaberi/laravel-vue-todo/blob/main/login.png)
