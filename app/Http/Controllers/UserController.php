@@ -26,34 +26,35 @@ class UserController extends BaseController
         return response()->json(['user' => $user], 201);
     }
     
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
 
-    // public function show($id)
-    // {
-    //     $item = User::findOrFail($id);
+        return response()->json(['user' => $user], 200);
+    }
 
-    //     return response()->json(['item' => $item], 200);
-    // }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
 
-    // public function update(Request $request, $id)
-    // {
-    //     $item = User::findOrFail($id);
+        $requestData = $request->all();
 
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'description' => 'nullable|string',
-    //         // Add other validation rules as needed
-    //     ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'nullable|string',
+        //     // Add other validation rules as needed
+        // ]);
 
-    //     $item->update($validatedData);
+        $user->update($requestData);
 
-    //     return response()->json(['message' => 'Item updated successfully'], 200);
-    // }
+        return response()->json(['message' => 'user updated successfully'], 200);
+    }
 
-    // public function destroy($id)
-    // {
-    //     $item = User::findOrFail($id);
-    //     $item->delete();
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
 
-    //     return response()->json(['message' => 'Item deleted successfully'], 200);
-    // }
+        return response()->json(['message' => 'user deleted successfully'], 200);
+    }
 }
