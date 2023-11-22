@@ -31,16 +31,27 @@ export default {
   },
   methods: {
     register() {
+        const userData = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          organization: this.organization,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+          userRole: this.userRole
+        };
 
-      console.log('Registration Data:', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        organization: this.organization,
-        password: this.password,
-        confirmPassword: this.confirmPassword,
-        userRole: this.userRole
-      });
-
+        axios.post('api/register', userData)
+          .then(function(response) {
+            const jsonResponse = {
+              status: true,
+              message: "Data saved correctly",
+              data: response,
+            };
+          res.status(200).send(jsonResponse);
+          })
+          .catch(function(error) {
+            res.status(500).send(`${error}`);
+          });
     }
   }
 };
