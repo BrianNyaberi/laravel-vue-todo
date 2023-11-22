@@ -15,21 +15,21 @@ class Controller extends BaseController
 
     public function index()
     {
-        $items = User::all();
-        return response()->json(['items' => $items], 200);
+        $users = User::all();
+        return response()->json(['users' => $users], 200);
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            // Add other validation rules as needed
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'nullable|string',
+        //     // Add other validation rules as needed
+        // ]);
 
-        $item = User::create($validatedData);
+        $user = User::create($request);
 
-        return response()->json(['item' => $item], 201);
+        return response()->json(['user' => $user], 201);
     }
 
     public function show($id)
