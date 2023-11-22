@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController as UserController;
+use App\Http\Controllers\ItemController as ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// User routes
-Route::post('/register', [UserController::class, 'index']);
+// User Routes
+Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/user', [UserController::class, 'fetchUser']);
+Route::get('/users', [UserController::class, 'fetchUsers']);
 
-// items
-Route::get('/items', [ItemController::class, 'index']);
-
-Route::prefix('/item')->group( function(){
+// Task Routes 
+Route::get('/tasks', [ItemController::class, 'index']);
+Route::prefix('/task')->group( function(){
     Route::post('/store', [ItemController::class, 'store']);
     Route::put('/{id}', [ItemController::class, 'update']);
     Route::delete('/{id}', [ItemController::class, 'destroy']);

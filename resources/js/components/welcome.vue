@@ -4,6 +4,7 @@
     <form @submit.prevent="register" class="register-form">
       <input type="text" v-model="firstName" placeholder="First Name" />
       <input type="text" v-model="lastName" placeholder="Last Name" />
+      <input type="text" v-model="email" placeholder="Email" />
       <input type="text" v-model="organization" placeholder="Organization" />
       <input type="password" v-model="password" placeholder="Password" />
       <input type="password" v-model="confirmPassword" placeholder="Confirm Password" />
@@ -12,18 +13,20 @@
         <option value="user">User</option>
       </select>
       <button type="submit">Register</button>
-      <h4>Already Registered? <router-link to="/login">Login</router-link></h4>
+      <a>Already Registered? <router-link to="/login">Login</router-link></a>
     </form>
   </div>
 </template>
 
 <script>
-export default {
+
+export default { 
   data() {
     return {
       firstName: '',
       lastName: '',
       organization: '',
+      email: '',
       password: '',
       confirmPassword: '',
       userRole: 'user'
@@ -31,16 +34,31 @@ export default {
   },
   methods: {
     register() {
+        const userData = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          organization: this.organization,
+          email: this.email,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+          userRole: this.userRole
+        };
 
-      console.log('Registration Data:', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        organization: this.organization,
-        password: this.password,
-        confirmPassword: this.confirmPassword,
-        userRole: this.userRole
-      });
+        axios.post('api/register', userData)
+          .then(function(response) {
+          //   const jsonResponse = {
+          //     status: true,
+          //     message: "Data saved correctly",
+          //     data: response,
+          //   };
+          // res.status(200).send(jsonResponse);
+          this.clearForm();
+          // Show success message using toast
 
+          })
+          .catch(function(error) {
+            res.status(500).send(`${error}`);
+          });
     }
   }
 };

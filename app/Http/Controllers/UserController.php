@@ -8,57 +8,55 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
-class Controller extends BaseController
+class UserController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
     public function index()
     {
-        $items = User::all();
-        return response()->json(['items' => $items], 200);
+        $users = User::all();
+        return response()->json(['users' => $users], 200);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            // Add other validation rules as needed
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'organization' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
+            'userRole' => 'required|string|max:255',
         ]);
 
-        $item = User::create($validatedData);
-
-        return response()->json(['item' => $item], 201);
+        $user = User::create($validatedData);
+    
+        return response()->json(['user' => $user], 201);
     }
-
+    
     public function show($id)
     {
-        $item = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return response()->json(['item' => $item], 200);
+        return response()->json(['user' => $user], 200);
     }
 
     public function update(Request $request, $id)
     {
-        $item = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            // Add other validation rules as needed
-        ]);
+        $requestData = $request->all();
 
-        $item->update($validatedData);
+        $user->update($requestData);
 
-        return response()->json(['message' => 'Item updated successfully'], 200);
+        return response()->json(['message' => 'user updated successfully'], 200);
     }
 
     public function destroy($id)
     {
-        $item = User::findOrFail($id);
-        $item->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
-        return response()->json(['message' => 'Item deleted successfully'], 200);
+        return response()->json(['message' => 'user deleted successfully'], 200);
     }
 }
