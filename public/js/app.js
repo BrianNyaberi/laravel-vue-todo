@@ -25174,6 +25174,9 @@ const isThenable = (thing) =>
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _bootstrap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
@@ -25186,6 +25189,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    login: _components_login_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    task: _components_tasks_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }
+});
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createWebHistory)(),
   routes: [{
@@ -25198,30 +25207,12 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
     path: '/task',
     component: _components_tasks_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
+  //     { path: '/times', component: TimesPage, meta: { requiresAuth: true } }
   // Other routes...
   ]
 });
 
-var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({});
-app.use(router);
-app.component('welcome', _components_welcome_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-app.mount('#app');
-
-// export default {
-//   components: {
-//     addItemForm,
-//     listView
-//   }
-// };
-
-// const router = new VueRouter({
-//   routes: [
-//     { path: '/', component: Login },
-//     { path: '/times', component: TimesPage, meta: { requiresAuth: true } }
-//   ]
-// });
-
-// router.beforeEach((to, from, next) => {
+//   router.beforeEach((to, from, next) => {
 //   // const isLoggedIn = /* Logic to check if the user is logged in */;
 //   if (to.matched.some(record => record.meta.requiresAuth)) {
 //     if (!isLoggedIn) {
@@ -25233,6 +25224,11 @@ app.mount('#app');
 //     next();
 //   }
 // });
+
+var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({});
+app.use(router);
+app.component('welcome', _components_welcome_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+app.mount('#app');
 
 /***/ }),
 

@@ -20,8 +20,16 @@ class UserController extends BaseController
 
     public function store(Request $request)
     {
-        $requestData = $request->all(); // Retrieve all request data as an array
-        $user = User::create($requestData);
+        $validatedData = $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'organization' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
+            'userRole' => 'required|string|max:255',
+        ]);
+
+        $user = User::create($validatedData);
     
         return response()->json(['user' => $user], 201);
     }
@@ -38,12 +46,6 @@ class UserController extends BaseController
         $user = User::findOrFail($id);
 
         $requestData = $request->all();
-
-        // $validatedData = $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'nullable|string',
-        //     // Add other validation rules as needed
-        // ]);
 
         $user->update($requestData);
 
