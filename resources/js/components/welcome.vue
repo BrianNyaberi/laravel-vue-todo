@@ -4,7 +4,7 @@
     <form @submit.prevent="register" class="register-form">
       <input type="text" v-model="firstName" placeholder="First Name" />
       <input type="text" v-model="lastName" placeholder="Last Name" />
-      <input type="email" v-model="email" placeholder="Email" />
+      <input type="text" v-model="email" placeholder="Email" />
       <input type="text" v-model="organization" placeholder="Organization" />
       <input type="password" v-model="password" placeholder="Password" />
       <input type="password" v-model="confirmPassword" placeholder="Confirm Password" />
