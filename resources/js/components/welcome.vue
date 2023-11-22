@@ -19,7 +19,8 @@
 </template>
 
 <script>
-export default {
+
+export default { 
   data() {
     return {
       firstName: '',
@@ -45,12 +46,15 @@ export default {
 
         axios.post('api/register', userData)
           .then(function(response) {
-            const jsonResponse = {
-              status: true,
-              message: "Data saved correctly",
-              data: response,
-            };
-          res.status(200).send(jsonResponse);
+          //   const jsonResponse = {
+          //     status: true,
+          //     message: "Data saved correctly",
+          //     data: response,
+          //   };
+          // res.status(200).send(jsonResponse);
+          this.clearForm();
+          // Show success message using toast
+
           })
           .catch(function(error) {
             res.status(500).send(`${error}`);

@@ -1,22 +1,28 @@
 import './bootstrap.js';
 
 import { createApp } from "vue";
+import { createRouter, createWebHistory } from 'vue-router';
+
 import welcome from "./components/welcome.vue";
 
+const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+      { path: '/', component: welcome },
+      // Other routes...
+    ],
+  });
+
 const app = createApp({})
-app.component('welcome', welcome)
+app.use(router);
 app.mount('#app')
 
 
-// import App from "./vue/app";
-// import VueRouter from 'vue-router';
 
 // import Login from './components/Login.vue';
 // import TimesPage from './components/TimesPage.vue';
 // import addItemForm from './addItemForm';
 // import listView from './listView';
-
-// Vue.use(VueRouter);
 
 // export default {
 //   components: {
