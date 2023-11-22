@@ -16,20 +16,19 @@ use App\Http\Controllers\ItemController as ItemController;
 |
 */
 
-// Route::get('tickets/statuses', [UserTicketController::class, 'statuses'])->name('tickets.statuses');
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// User routes
+// User Routes
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/user', [UserController::class, 'fetchUser']);
+Route::get('/users', [UserController::class, 'fetchUsers']);
 
-// items
-Route::get('/items', [ItemController::class, 'index']);
-
-Route::prefix('/item')->group( function(){
+// Task Routes 
+Route::get('/tasks', [ItemController::class, 'index']);
+Route::prefix('/task')->group( function(){
     Route::post('/store', [ItemController::class, 'store']);
     Route::put('/{id}', [ItemController::class, 'update']);
     Route::delete('/{id}', [ItemController::class, 'destroy']);

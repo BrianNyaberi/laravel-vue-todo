@@ -13,7 +13,7 @@
         <option value="user">User</option>
       </select>
       <button type="submit">Register</button>
-      <h4>Already Registered? <router-link to="/login">Login</router-link></h4>
+      <a>Already Registered? <router-link to="/login">Login</router-link></a>
     </form>
   </div>
 </template>

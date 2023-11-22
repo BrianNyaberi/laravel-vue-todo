@@ -4,25 +4,23 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from 'vue-router';
 
 import welcome from "./components/welcome.vue";
+import login from "./components/login.vue";
+import task from "./components/tasks.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-      { path: '/', component: welcome },
+      { path: '/', component: welcome }, 
+      { path: '/login', component: login },
+      { path: '/task', component: task },
       // Other routes...
     ],
   });
 
 const app = createApp({})
 app.use(router);
+app.component('welcome', welcome)
 app.mount('#app')
-
-
-
-// import Login from './components/Login.vue';
-// import TimesPage from './components/TimesPage.vue';
-// import addItemForm from './addItemForm';
-// import listView from './listView';
 
 // export default {
 //   components: {
@@ -51,7 +49,3 @@ app.mount('#app')
 //   }
 // });
 
-// new Vue({
-//   router,
-//   render: h => h(App)
-// }).$mount('#app');
